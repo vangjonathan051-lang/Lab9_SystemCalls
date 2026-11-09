@@ -24,7 +24,6 @@ int main(void) {
     struct timespec ts;
     if (clock_gettime(CLOCK_REALTIME, &ts) == -1) {
         perror("clock_gettime");
-        return EXIT_FAILURE;
     }
     long long ns = (long long)ts.tv_sec * 1000000000LL + ts.tv_nsec;
     printf("Time of day (ns): %lld\n", ns);
@@ -32,7 +31,6 @@ int main(void) {
     char hostname[HOST_NAME_MAX + 1];
     if (gethostname(hostname, sizeof(hostname)) == -1) {
         perror("gethostname");
-        return EXIT_FAILURE;
     }
     hostname[HOST_NAME_MAX] = '\0';
     print_if_set("Network name", hostname);
@@ -40,7 +38,6 @@ int main(void) {
     struct utsname sys;
     if (uname(&sys) == -1) {
         perror("uname");
-        return EXIT_FAILURE;
     }
     print_if_set("OS name", sys.sysname);
     print_if_set("OS release", sys.release);
@@ -54,9 +51,7 @@ int main(void) {
     long avail = sysconf(_SC_AVPHYS_PAGES);
     if (page == -1 || phys == -1 || avail == -1) {
         perror("sysconf");
-        return EXIT_FAILURE;
     }
     printf("Total memory (bytes): %lld\n", (long long)phys * page);
     printf("Free memory (bytes): %lld\n", (long long)avail * page);
-    return EXIT_SUCCESS;
 }
