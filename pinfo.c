@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
 
     if (argc > 2) {
         fprintf(stderr, "Usage: %s [pid]\n", argv[0]);
-        return EXIT_FAILURE;
+      
     }
     if (argc == 2) {
         char *end;
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
         long val = strtol(argv[1], &end, 10);
         if (errno != 0 || *end != '\0' || end == argv[1] || val < 0) {
             fprintf(stderr, "Invalid process id: %s\n", argv[1]);
-            return EXIT_FAILURE;
+           
         }
         pid = (pid_t)val;
     }
@@ -48,13 +48,12 @@ int main(int argc, char *argv[]) {
     int priority = getpriority(PRIO_PROCESS, pid);
     if (priority == -1 && errno != 0) {
         perror("getpriority");
-        return EXIT_FAILURE;
+      
     }
 
     int policy = sched_getscheduler(pid);
     if (policy == -1) {
         perror("sched_getscheduler");
-        return EXIT_FAILURE;
     }
 
     if (pid == 0) {
