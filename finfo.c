@@ -56,8 +56,6 @@ int main(int argc, char *argv[]){
     if (tm_info == NULL ||
         strftime(time_buffer, sizeof(time_buffer), "%Y-%m-%d %H:%M:%S", tm_info) == 0) {
         fprintf(stderr, "Error formatting time\n");
-        return EXIT_FAILURE;
     }
     printf("Last Modified: %s\n", time_buffer);
-    return EXIT_SUCCESS;
 }
