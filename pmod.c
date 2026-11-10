@@ -1,6 +1,7 @@
 /**********************************************
 * Filename: finfo.c
 * Description: displays file information
+* CPE2600
 * Author: Jonathan Vang
 * Date: 11/3/2026
 ***********************************************/
