@@ -3,7 +3,7 @@
 * Description: displays file information
 * Author: Jonathan Vang
 * Date: 11/3/2026
-***********************************************/
+***********************************************/ 
 
 #define _GNU_SOURCE
 #include <stdio.h>
